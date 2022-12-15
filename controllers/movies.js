@@ -2,18 +2,25 @@ const Movie = require('../models/movie')
 
 module.exports = {
     index,
+    show,
     new: newMovie,
     create
 }
 
 function index(req, res) {
     Movie.find({}, function(err, movies) {
-        res.render('movies/index', { movies })
+        res.render('movies/index', { title: 'All movies', movies })
     })
 }
 
+function show(req, res) {
+    Movie.findById(req.params.id, function(err, movie) {
+      res.render('movies/show', { title: 'Movie Detail', movie })
+    });
+  }
+
 function newMovie(req, res) {
-    res.render('movies/new')
+    res.render('movies/new', { title: 'Add Movie' })
 }
 
 function create(req, res) {
@@ -32,7 +39,5 @@ function create(req, res) {
         if (err) return res.render('movies/new')
         console.log(movie)
         res.redirect('/movies')
-    })  
-    // for now, redirect right back to new.ejs
-
+    })
 }

@@ -10,6 +10,9 @@ router.get('/', moviesCtrl.index)
 // GET /movies/new - new movie form
 router.get('/new', moviesCtrl.new)
 
+// GET /movies/id - show details of a single movie
+router.get('/:id', moviesCtrl.show)
+
 // POST /movies - add new movie
 router.post('/', moviesCtrl.create)
 
