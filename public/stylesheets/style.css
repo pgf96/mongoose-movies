@@ -66,11 +66,7 @@ nav > a.active {
   grid-template-columns: repeat(2, minmax(auto, 22rem));
 }
 
-<<<<<<< HEAD
-#new-form * {
-=======
 #new-form *, #add-review-form * {
->>>>>>> 9ee2ec6 (Initial and additions)
   font-size: 20px;
   padding: 5px;
   border-radius: 5px;
