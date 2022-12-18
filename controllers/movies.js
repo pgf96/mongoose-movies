@@ -23,7 +23,7 @@ function show(req, res) {
             Performer.find(
                 { _id: { $nin: movie.cast } },
                 function (err, performers) {
-                    console.log(movie)
+                    console.log(performers)
                     res.render('movies/show', { title: 'Movie Detail', movie, performers })
                 }
             )
@@ -44,7 +44,6 @@ function create(req, res) {
     movie.save(function (err) {
         // one way to handle errors
         if (err) return res.redirect('movies/new')
-        console.log(movie)
         res.redirect(`/movies/${movie._id}`)
     })
 }
