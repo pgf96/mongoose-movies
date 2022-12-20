@@ -23,5 +23,27 @@ Promise.all([p1,p2])
 })
 .then(function(results) {
     console.log('created movies ', results)
+    return Promise.all([
+        // find performer
+        Performer.findOne({name: 'Mark Hamill'}),
+        // find a movie
+        Movie.findOne({title: 'Star Wars - A New Hope'})
+
+    ])
+})
+.then(function(results) {
+    console.log('fonud a performer and a movie: ', results)
+    const mark = results[0]
+    const starWars = results[1]
+
+    starWars.cast.push(mark)
+
+    return starWars.save()
+
+
+    process.exit()
+})
+.then(function(results) {
+    console.log('mark is now a cast member of star wars', results)
     process.exit()
 })
